@@ -1,0 +1,76 @@
+mutation CreateSeedData @transaction @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public as it only inserts seed data.") {
+  user_insertMany(data: [
+    {
+      id: "67c39678-99b9-4465-b3d3-0233625a60ba",
+      username: "demouser1",
+      email: "demo1@example.com",
+      createdAt: "2024-04-29T12:00:00Z",
+      displayName: "Demo User 1"
+    },
+    {
+      id: "88b2e6b8-0174-40d9-9905-c1f99443c0d4",
+      username: "demouser2",
+      email: "demo2@example.com",
+      createdAt: "2024-04-29T13:00:00Z",
+      displayName: "Demo User 2"
+    }
+  ])
+  game_insertMany(data: [
+    {
+      id: "90b8e3b6-091f-494c-8309-18f991817128",
+      title: "Example Game 1",
+      createdAt: "2024-04-29T14:00:00Z",
+      genre: "Action"
+    },
+    {
+      id: "428774ca-61ae-48b0-b9a1-251a240554cf",
+      title: "Example Game 2",
+      createdAt: "2024-04-29T15:00:00Z",
+      genre: "RPG"
+    }
+  ])
+  category_insertMany(data: [
+    {
+      id: "2199f7b0-8b1a-454c-9a26-5cc7451a7502",
+      userId: "67c39678-99b9-4465-b3d3-0233625a60ba",
+      name: "Category 1",
+      createdAt: "2024-04-29T16:00:00Z"
+    },
+    {
+      id: "31a47f09-852d-4848-a224-aa7c219f29a3",
+      userId: "88b2e6b8-0174-40d9-9905-c1f99443c0d4",
+      name: "Category 2",
+      createdAt: "2024-04-29T17:00:00Z"
+    }
+  ])
+  link_insertMany(data: [
+    {
+      id: "5e0b2525-6b5b-4205-8169-c865173236ae",
+      categoryId: "2199f7b0-8b1a-454c-9a26-5cc7451a7502",
+      userId: "67c39678-99b9-4465-b3d3-0233625a60ba",
+      title: "Link 1",
+      url: "http://example.com/link1",
+      createdAt: "2024-04-29T18:00:00Z"
+    },
+    {
+      id: "449a7f0a-740f-4065-a84d-233cfb071598",
+      categoryId: "31a47f09-852d-4848-a224-aa7c219f29a3",
+      userId: "88b2e6b8-0174-40d9-9905-c1f99443c0d4",
+      title: "Link 2",
+      url: "http://example.com/link2",
+      createdAt: "2024-04-29T19:00:00Z"
+    }
+  ])
+  featuredGame_insertMany(data: [
+    {
+      userId: "67c39678-99b9-4465-b3d3-0233625a60ba",
+      gameId: "90b8e3b6-091f-494c-8309-18f991817128",
+      createdAt: "2024-04-29T20:00:00Z"
+    },
+    {
+      userId: "88b2e6b8-0174-40d9-9905-c1f99443c0d4",
+      gameId: "428774ca-61ae-48b0-b9a1-251a240554cf",
+      createdAt: "2024-04-29T21:00:00Z"
+    }
+  ])
+}

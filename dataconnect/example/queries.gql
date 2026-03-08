@@ -1,0 +1,44 @@
+mutation CreateNewUser($email: String!, $username: String!) @auth(level: USER, insecureReason: "This operation is safe to expose to all logged in users.") {
+  user_insert(data: {
+    email: $email,
+    username: $username,
+    createdAt_expr: "request.time",
+    id_expr: "uuidV4()"
+  })
+}
+
+query GetUserLinks($userId: UUID!) @auth(level: USER) {
+  links(where: {userId: {eq: $userId}}) {
+    id
+    title
+    url
+    description
+    iconUrl
+    orderIndex
+    category {
+      id
+      name
+    }
+  }
+}
+
+mutation CreateNewLink($title: String!, $url: String!, $userId: UUID!, $categoryId: UUID) @auth(level: USER) {
+  link_insert(data: {
+    title: $title,
+    url: $url,
+    userId: $userId,
+    categoryId: $categoryId,
+    createdAt_expr: "request.time",
+    orderIndex: 0,
+    id_expr: "uuidV4()"
+  })
+}
+
+mutation UpdateLinkOrderIndex($id: UUID!, $orderIndex: Int!) @auth(level: USER) {
+  link_update(
+    key: {id: $id},
+    data: {
+      orderIndex: $orderIndex
+    }
+  )
+}

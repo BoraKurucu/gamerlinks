@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-dark: #071018;
+  --bg-darker: #040a11;
+  --neon-blue: #00E5FF;
+  --neon-cyan: #00FFFF;
+}
+
+/* Theme colors are now set dynamically via JavaScript */
+:root {
+  --neon-primary: #00E5FF;
+  --neon-secondary: #00FFFF;
+  --bg-gradient-1: radial-gradient(1200px 600px at 50% -10%, rgba(0, 229, 255, 0.35), transparent);
+  --bg-gradient-2: radial-gradient(900px 500px at 120% 20%, rgba(0, 255, 255, 0.25), transparent);
+  --bg-gradient-3: radial-gradient(700px 420px at -10% 60%, rgba(139, 233, 253, 0.20), transparent);
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: white;
+}
+
+/* Background gradients are now set dynamically via JavaScript */
+
+html {
+  background: var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3), var(--bg-dark);
+}
+
+/* Fancy utilities */
+.glass {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  position: relative;
+}
+
+/* Add prominent theme-colored background glow to glass containers */
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--neon-primary) 25%, transparent) 0%, transparent 60%),
+              radial-gradient(circle at 70% 80%, color-mix(in srgb, var(--neon-primary) 20%, transparent) 0%, transparent 60%),
+              radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--neon-primary) 15%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+/* Profile container background effect - more prominent */
+.profile-container {
+  position: relative;
+}
+
+.profile-container::before {
+  content: '';
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(circle at 20% 30%, color-mix(in srgb, var(--neon-primary) 18%, transparent) 0%, transparent 70%),
+              radial-gradient(circle at 80% 70%, color-mix(in srgb, var(--neon-primary) 15%, transparent) 0%, transparent 70%),
+              radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--neon-primary) 12%, transparent) 0%, transparent 80%);
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.neon-btn {
+  transition: transform 200ms ease, box-shadow 300ms ease, opacity 200ms ease;
+  box-shadow: 0 0 0 var(--neon-primary);
+}
+.neon-btn:hover {
+  box-shadow: 0 0 14px color-mix(in srgb, var(--neon-primary) 60%, transparent), 
+              0 0 30px color-mix(in srgb, var(--neon-primary) 40%, transparent);
+}
+.neon-btn:hover {
+  transform: translateY(-1px);
+}
+
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 0 var(--neon-primary); }
+  50% { box-shadow: 0 0 18px var(--neon-primary); }
+}
+
+.avatar-glow {
+  animation: neonPulse 2.6s infinite ease-in-out;
+}
+
+.card-hover {
+  transition: transform 200ms ease, box-shadow 300ms ease, border-color 200ms ease;
+}
+.card-hover:hover {
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--neon-primary) 8%, transparent);
+  border-color: color-mix(in srgb, var(--neon-primary) 50%, transparent);
+}
+
+/* Theme-aware utility classes */
+.bg-theme-primary {
+  background-color: var(--neon-primary);
+}
+
+.text-theme-primary {
+  color: var(--neon-primary);
+}
+
+.border-theme-primary {
+  border-color: var(--neon-primary);
+}
+
+.bg-theme-primary-10 {
+  background-color: color-mix(in srgb, var(--neon-primary) 10%, transparent);
+}
+
+.bg-theme-primary-20 {
+  background-color: color-mix(in srgb, var(--neon-primary) 20%, transparent);
+}
+
+.border-theme-primary-50 {
+  border-color: color-mix(in srgb, var(--neon-primary) 50%, transparent);
+}
+
+.ring-theme-primary-50 {
+  --tw-ring-color: color-mix(in srgb, var(--neon-primary) 50%, transparent);
+}
+
+.hover\:bg-theme-primary-20:hover {
+  background-color: color-mix(in srgb, var(--neon-primary) 20%, transparent);
+}
+
+.hover\:bg-theme-primary-50:hover {
+  background-color: color-mix(in srgb, var(--neon-primary) 50%, transparent);
+}
+
+.ring-theme-primary-40 {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--neon-primary) 40%, transparent);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+}
+
+.avatar-ring {
+  --tw-ring-color: color-mix(in srgb, var(--neon-primary) 40%, transparent);
+}
+
+/* Responsive design improvements */
+@media (max-width: 640px) {
+  /* Better touch targets on mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent text from being too small */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Better scrolling on mobile */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Improve form inputs on mobile */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+  font-size: 16px; /* Prevents zoom on iOS */
+}
+
+@media (min-width: 640px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    font-size: inherit;
+  }
+}
+
+/* Better focus states for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--neon-primary);
+  outline-offset: 2px;
+}
+
+/* Improve modal scrolling on mobile */
+@media (max-width: 640px) {
+  .modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Better spacing on small screens */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

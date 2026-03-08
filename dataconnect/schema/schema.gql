@@ -1,0 +1,42 @@
+type User @table {
+  username: String!
+  email: String!
+  createdAt: Timestamp!
+  displayName: String
+  bio: String
+  profileImageUrl: String
+  themeName: String
+}
+
+type Link @table {
+  user: User!
+  url: String!
+  title: String!
+  createdAt: Timestamp!
+  description: String
+  iconUrl: String
+  orderIndex: Int
+  category: Category
+}
+
+type Category @table {
+  user: User!
+  name: String!
+  createdAt: Timestamp!
+  orderIndex: Int
+}
+
+type Game @table {
+  title: String!
+  createdAt: Timestamp!
+  coverImageUrl: String
+  description: String
+  genre: String
+}
+
+type FeaturedGame @table(key: ["user", "game"]) {
+  user: User!
+  game: Game!
+  createdAt: Timestamp!
+  userNote: String
+}

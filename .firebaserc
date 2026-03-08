@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "gamerlinks-app"
+  },
+  "targets": {
+    "gamerlinks-app": {
+      "hosting": {
+        "gamerlinks": [
+          "gamerlinks"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

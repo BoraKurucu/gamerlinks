@@ -1,0 +1,59 @@
+{
+  "name": "gamerlinks",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@dataconnect/generated": "file:src/dataconnect-generated",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "firebase": "^12.5.0",
+    "qrcode.react": "^4.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-icons": "^5.5.0",
+    "react-image-crop": "^11.0.10",
+    "react-router-dom": "^6.30.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "test:fixes": "node test-fixes.js",
+    "test:badges": "echo 'Open test-badge-ui.js in browser console while on /badge-manager page' && echo 'Or visit test-badge-ranks.html for basic tests'",
+    "test:recurring-events": "node test-recurring-events.js",
+    "android:sync": "npm run build && npx cap sync android",
+    "android:open": "npx cap open android",
+    "android:build": "cd android && ./gradlew bundleRelease",
+    "android:build:apk": "cd android && ./gradlew assembleRelease"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18",
+    "typescript": "^4.9.5",
+    "yaml": "^2.8.1"
+  }
+}
